@@ -2,10 +2,14 @@
 
 int main()
 {
-  int ** puzzle;
+    int ** puzzle;
+    Square *** sudoku;
 
-  puzzle = createPuzzle();
-  createPuzzle(puzzle);
+    puzzle = createPuzzle();
 
-  return 0;
+    printPuzzle(puzzle);
+
+    sudoku = setUpPuzzle(puzzle);
+
+    return 0;
 }
