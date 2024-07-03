@@ -1,5 +1,12 @@
 #include "sudoku.h"
 
+/*
+ * int boxSingles(Square *** sudoku, Box ** boxes)
+ *
+ * Function to loop through all boxes and search
+ * for a number within the box that only appears as
+ * possible once.
+ */
 int boxSingles(Square *** sudoku, Box ** boxes)
 {
     int i, j, x;
@@ -37,11 +44,21 @@ int boxSingles(Square *** sudoku, Box ** boxes)
                 boxes[i]->squares[temp]->solvable = 0;
 
                 updateSudoku(sudoku, boxes[i]->squares[temp]->row, boxes[i]->squares[temp]->column);
+
+                return 1;
             }
         }
     }
+
+    return 0;
 }
 
+/*
+ * Box ** createBoxes()
+ *
+ * Function to create boxes while setting up
+ * sudoku puzzle
+ */
 Box ** createBoxes()
 {
     int x, y;
@@ -62,6 +79,12 @@ Box ** createBoxes()
     return boxes;
 }
 
+/*
+ * int updateBoxes(Square *** sudoku, int row, int column)
+ *
+ * Once a square is solved within a box, all other
+ * 
+ */
 int updateBoxes(Square *** sudoku, int row, int column)
 {
     int x;

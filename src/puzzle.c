@@ -11,6 +11,10 @@ Sudoku * createSudoku(Square *** squares, Box ** boxes)
     return sudoku;
 }
 
+/* Sudoku * setUpPuzzle(int ** puzzle)
+ *
+ * Initial puzzle creation
+ */
 Sudoku * setUpPuzzle(int ** puzzle)
 {
     Square *** sudoku;
@@ -83,6 +87,13 @@ Sudoku * setUpPuzzle(int ** puzzle)
     return createSudoku(sudoku, boxes);
 }
 
+/*
+ * int updateSudoku(Square *** sudoku, int row, int column)
+ *
+ * Once a single square is solved, all other squares along
+ * the same row and coloumn must be updated to reflect the
+ * change
+ */
 int updateSudoku(Square *** sudoku, int row, int column)
 {
     int x;
@@ -110,6 +121,12 @@ int updateSudoku(Square *** sudoku, int row, int column)
 
 }
 
+/*
+ * int checkPuzzle(Square *** sudoku, Box ** boxes)
+ *
+ * Loop through all squares in the puzzle to check for
+ * a solvable square.
+ */
 int checkPuzzle(Square *** sudoku, Box ** boxes)
 {
     int i, j, x;
@@ -125,15 +142,20 @@ int checkPuzzle(Square *** sudoku, Box ** boxes)
                 solveSquare(sudoku[i][j]);
                 updateSudoku(sudoku, i, j);
                 updateBoxes(sudoku, i, j);
+
+                return 1;
             }
         }
     }
 
-    boxSingles(sudoku, boxes);
-
-    return 1;
+    return boxSingles(sudoku, boxes);
 }
 
+/*
+ * int ** createPuzzle()
+ *
+ * Create a double array containing the puzzle
+ */
 int ** createPuzzle()
 {
     int ** puzzle;
@@ -165,6 +187,11 @@ int ** createPuzzle()
     return puzzle;
 }
 
+/*
+ * void printPuzzle(Square *** puzzle)
+ *
+ * Display puzzle in sudoku form
+ */
 void printPuzzle(Square *** puzzle)
 {
     int i, j;
