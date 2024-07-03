@@ -7,35 +7,22 @@ int SIZE_COLUMNS = 9;
 int main()
 {
     int ** puzzle;
-    Square *** sudoku;
+    Sudoku * sudoku;
 
     puzzle = createPuzzle();
 
     sudoku = setUpPuzzle(puzzle);
 
-    printPuzzle(sudoku);
+    printPuzzle(sudoku->squares);
 
-    checkPuzzle(sudoku);
-
-    checkPuzzle(sudoku);
-
-    checkPuzzle(sudoku);
-
-    checkPuzzle(sudoku);
-
-    checkPuzzle(sudoku);
-
-    checkPuzzle(sudoku);
-
-    checkPuzzle(sudoku);
-
-    checkPuzzle(sudoku);
-
-    checkPuzzle(sudoku);
+    checkPuzzle(sudoku->squares, sudoku->boxes);
+    checkPuzzle(sudoku->squares, sudoku->boxes);
+    checkPuzzle(sudoku->squares, sudoku->boxes);
+    checkPuzzle(sudoku->squares, sudoku->boxes);
 
     printf("\n\n");
 
-    printPuzzle(sudoku);
+    printPuzzle(sudoku->squares);
 
     return 0;
 }
